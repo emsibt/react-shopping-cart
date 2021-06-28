@@ -3,10 +3,15 @@ import PropTypes from "prop-types";
 import './style.css'
 ProductList.propTypes = {
   productList: PropTypes.array,
+  onClickAddToCartButton: PropTypes.func,
 };
 
 function ProductList(props) {
-  const { productList } = props;
+  const { productList, onClickAddToCartButton } = props;
+  function handleAddToCart(product){
+    if(!onClickAddToCartButton) return;
+    onClickAddToCartButton(product);
+  }
   return (
     <ul className="products">
       {productList.map((product) => (
@@ -19,7 +24,7 @@ function ProductList(props) {
           </div>
           <div className="products__price">
             <p>{product.price + ".000 VND"}</p>
-            <button className="buy-button">Add to cart</button>
+            <button className="buy-button" onClick = {() => handleAddToCart(product)}>Add to cart</button>
           </div>
         </li>
       ))}
