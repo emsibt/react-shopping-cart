@@ -41,3 +41,13 @@ footer{
   align-items: center;
   justify-content: center;
 }
+.content{
+  display: flex;
+  flex-wrap: wrap;
+}
+.productList{
+  flex: 3 60px;
+}
+.sidebar{
+  flex: 1 20px;
+}

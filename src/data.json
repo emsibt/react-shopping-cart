@@ -1,0 +1,80 @@
+{
+  "products": [
+    {
+      "_id": "dress1",
+      "image": "images/dress1.jpg",
+      "title": "Cái váy với sọc đen và trắng",
+      "description": "Cái này là trend mới nè",
+      "availableSizes": [
+        "X",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "price": 250
+    },
+    {
+      "_id": "dress2",
+      "image": "images/dress2.jpg",
+      "title": "Cái váy màu trắng với hoa màu hồng",
+      "description": "Cái này là trend mới nè",
+      "availableSizes": [
+        "X",
+        "L",
+        "XL"
+      ],
+      "price": 320
+    },
+    {
+      "_id": "dress3",
+      "image": "images/dress3.jpg",
+      "title": "Cái váy màu trắng với họa tiết màu đen",
+      "description": "Cái này là trend mới nè",
+      "availableSizes": [
+        "X",
+        "M",
+        "L",
+        "XL"
+      ],
+      "price": 270
+    },
+    {
+      "_id": "dress4",
+      "image": "images/dress4.jpg",
+      "title": "Cái váy màu xanh với cổ áo màu trắng",
+      "description": "Cái này là trend mới nè",
+      "availableSizes": [
+        "X",
+        "M"
+      ],
+      "price": 215
+    },
+    {
+      "_id": "dress5",
+      "image": "images/dress5.jpg",
+      "title": "Cái váy trắng nâu",
+      "description": "Cái này là trend mới nè",
+      "availableSizes": [
+        "X",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "price": 220
+    },
+    {
+      "_id": "dress6",
+      "image": "images/dress6.jpg",
+      "title": "Cái váy trắng xanh",
+      "description": "Cái này là trend mới nè",
+      "availableSizes": [
+        "X",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "price": 280
+    }
+  ]
+}
