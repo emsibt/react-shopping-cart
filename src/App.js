@@ -5,6 +5,7 @@ import data from "./data.json";
 import ProductList from "./features/product/component/productList";
 function App() {
   const [products, setProducts] = useState([]);
+  const [cardItems, setCardItems] = useState([]);
   const [filter, setFilter] = useState("");
   const [renderProductList, setRenderProductList] = useState(data.products);
   useEffect(() => {
@@ -33,7 +34,7 @@ function App() {
             } else break;
           }
           sortedProductList.splice([j + 1], 1, current);
-        } else sortedProductList[product] = renderProductList[product];
+        } else sortedProductList[product] = data.products[product];
       }
     } catch (error) {
       console.log(error);
@@ -51,7 +52,24 @@ function App() {
     setRenderProductList(newProductList);
     setFilter(sizeFilter);
   }
-
+//Add to cart button
+  function handleAddToCart(product){
+    console.log(product._id)
+    //creat card list
+    const cardList =cardItems.slice();
+    let alreadyInCart= false;
+    cardList.forEach((item) =>{
+      if(item._id === product._id){
+        item.count++;
+        alreadyInCart = true;
+      }
+    });
+    if(!alreadyInCart) {
+      cardList.push({...product, count: 1});
+    }
+    setCardItems(cardList)
+    console.log(cardItems)
+  }
   return (
     <div className="grid-container">
       <header>
@@ -65,7 +83,9 @@ function App() {
               onChangeSortFilter={handleChangeSortFilter}
               onChangeSizeFilter={handleChangeSizeFilter}
             />
-            <ProductList productList={products} />
+            <ProductList productList={products}
+             onClickAddToCartButton = {handleAddToCart} 
+            />
           </div>
           <div className="sidebar">Cart Items</div>
         </div>
