@@ -1,0 +1,17 @@
+.filter{
+    display:flex;
+    padding: 10px 0 0 0;
+    border-bottom: 2px #c0c0c0 solid;
+    justify-content: space-between ;
+    align-items: center;
+    font-size: 25px;
+    text-align: center;
+}
+.filter-sort select{
+    height: 25px;
+    margin-bottom: 5px;
+}
+.filter-size select{
+    height: 25px;
+    margin-bottom: 5px;
+}
