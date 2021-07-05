@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import Filter from "./components/Filter/Filter";
 import data from "./data.json";
+import Cart from "./features/cart";
 import ProductList from "./features/product/component/productList";
 function App() {
   const [products, setProducts] = useState([]);
@@ -11,6 +12,7 @@ function App() {
   useEffect(() => {
     setProducts(renderProductList);
   }, [filter]);
+
   function handleChangeSortFilter(sortFilter) {
     // console.log(sortFilter);
     const sortedProductList = [renderProductList["0"]];
@@ -42,6 +44,7 @@ function App() {
     setRenderProductList(sortedProductList);
     setFilter(sortFilter);
   }
+
   function handleChangeSizeFilter(sizeFilter) {
     // console.log(sizeFilter);
     const newProductList = data.products.filter(
@@ -52,23 +55,32 @@ function App() {
     setRenderProductList(newProductList);
     setFilter(sizeFilter);
   }
-//Add to cart button
-  function handleAddToCart(product){
-    console.log(product._id)
+
+  //Add to cart button
+  function handleAddToCart(product) {
+    // console.log(product._id);
     //creat card list
-    const cardList =cardItems.slice();
-    let alreadyInCart= false;
-    cardList.forEach((item) =>{
-      if(item._id === product._id){
+    const cardList = cardItems.slice();
+    let alreadyInCart = false;
+    try{cardList.forEach((item) => {
+      if (item._id === product._id) {
         item.count++;
         alreadyInCart = true;
       }
     });
-    if(!alreadyInCart) {
-      cardList.push({...product, count: 1});
+    if (!alreadyInCart) {
+      cardList.push({ ...product, count: 1 });
     }
-    setCardItems(cardList)
-    console.log(cardItems)
+    setCardItems(cardList);}
+    catch(error){console.log(error)}
+  }
+  
+  function handleRemoveToCart(item){
+    try{
+      const newCardItems = cardItems.filter(element => element._id !== item);
+      setCardItems(newCardItems)
+    }
+    catch(e){console.log(e)}
   }
   return (
     <div className="grid-container">
@@ -83,11 +95,14 @@ function App() {
               onChangeSortFilter={handleChangeSortFilter}
               onChangeSizeFilter={handleChangeSizeFilter}
             />
-            <ProductList productList={products}
-             onClickAddToCartButton = {handleAddToCart} 
+            <ProductList
+              productList={products}
+              onClickAddToCartButton={handleAddToCart}
             />
           </div>
-          <div className="sidebar">Cart Items</div>
+          <div className="sidebar">
+            <Cart cartItems = {cardItems} onClickRemoveToCart ={handleRemoveToCart}/>
+          </div>
         </div>
       </main>
       <footer>footer</footer>
